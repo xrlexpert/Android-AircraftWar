@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AircraftWar2024</string>
+    <string name="single_player_mode">单机模式</string>
 </resources>
