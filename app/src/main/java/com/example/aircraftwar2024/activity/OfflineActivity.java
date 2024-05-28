@@ -1,5 +1,6 @@
-package com.example.aircraftwar2024;
+package com.example.aircraftwar2024.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.example.aircraftwar2024.R;
 
 public class OfflineActivity extends AppCompatActivity {
 
@@ -31,21 +34,38 @@ public class OfflineActivity extends AppCompatActivity {
         easyMode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(OfflineActivity.this,GameActivity.class);
+                intent.putExtra("gameType",0);
+                startActivity(intent);
             }
         });
         normalMode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(OfflineActivity.this,GameActivity.class);
+                intent.putExtra("gameType",1);
+                startActivity(intent);
             }
         });
         hardMode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(OfflineActivity.this,GameActivity.class);
+                intent.putExtra("gameType",2);
+                startActivity(intent);
 
             }
         });
+
+        Button backHome = findViewById(R.id.backHome);
+        backHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(OfflineActivity.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
 }

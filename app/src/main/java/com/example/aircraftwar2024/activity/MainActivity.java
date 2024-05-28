@@ -1,4 +1,4 @@
-package com.example.aircraftwar2024;
+package com.example.aircraftwar2024.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+
+import com.example.aircraftwar2024.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
                 if(musicOn.isChecked()){
                     music = true;
                 }
-                Intent intent = new Intent(MainActivity.this,OfflineActivity.class);
+                Intent intent = new Intent(MainActivity.this, OfflineActivity.class);
                 intent.putExtra("music", music);
                 startActivity(intent);
             }
