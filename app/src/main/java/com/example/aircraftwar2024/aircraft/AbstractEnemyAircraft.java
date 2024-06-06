@@ -3,6 +3,8 @@ package com.example.aircraftwar2024.aircraft;
 
 
 import com.example.aircraftwar2024.activity.GameActivity;
+import com.example.aircraftwar2024.game.BaseGame;
+import com.example.aircraftwar2024.observer.Observer;
 import com.example.aircraftwar2024.supply.AbstractFlyingSupply;
 
 import java.util.List;
@@ -14,7 +16,7 @@ import java.util.List;
  *
  * @author hitsz
  */
-public abstract class AbstractEnemyAircraft extends AbstractAircraft {
+public abstract class AbstractEnemyAircraft extends AbstractAircraft  {
 
     public AbstractEnemyAircraft(int locationX, int locationY, int speedX, int speedY, int hp) {
         super(locationX, locationY, speedX, speedY, hp);

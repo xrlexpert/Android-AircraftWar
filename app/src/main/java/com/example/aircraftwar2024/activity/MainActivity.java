@@ -10,6 +10,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.example.aircraftwar2024.R;
+import com.example.aircraftwar2024.scores.ScoreDaoImpl;
 
 public class MainActivity extends AppCompatActivity {
 

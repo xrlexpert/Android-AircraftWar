@@ -36,6 +36,7 @@ public class OfflineActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(OfflineActivity.this,GameActivity.class);
                 intent.putExtra("gameType",0);
+                intent.putExtra("musicOn",musicOn);
                 startActivity(intent);
             }
         });
@@ -44,6 +45,7 @@ public class OfflineActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(OfflineActivity.this,GameActivity.class);
                 intent.putExtra("gameType",1);
+                intent.putExtra("musicOn",musicOn);
                 startActivity(intent);
             }
         });
@@ -52,6 +54,7 @@ public class OfflineActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(OfflineActivity.this,GameActivity.class);
                 intent.putExtra("gameType",2);
+                intent.putExtra("musicOn",musicOn);
                 startActivity(intent);
 
             }

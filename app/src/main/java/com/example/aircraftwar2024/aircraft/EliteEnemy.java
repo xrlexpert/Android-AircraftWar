@@ -7,6 +7,8 @@ import com.example.aircraftwar2024.factory.supply_factory.BombSupplyFactory;
 import com.example.aircraftwar2024.factory.supply_factory.FireSupplyFactory;
 import com.example.aircraftwar2024.factory.supply_factory.HpSupplyFactory;
 import com.example.aircraftwar2024.factory.supply_factory.SupplyFactory;
+import com.example.aircraftwar2024.game.BaseGame;
+import com.example.aircraftwar2024.observer.Observer;
 import com.example.aircraftwar2024.supply.AbstractFlyingSupply;
 
 import java.util.LinkedList;
@@ -18,7 +20,7 @@ import java.util.List;
  *
  * @author hitsz
  */
-public class EliteEnemy extends AbstractEnemyAircraft {
+public class EliteEnemy extends AbstractEnemyAircraft implements Observer {
 
     /**
      * 道具工厂
@@ -62,5 +64,10 @@ public class EliteEnemy extends AbstractEnemyAircraft {
     @Override
     public int score() {
         return 30;
+    }
+
+    @Override
+    public void update() {
+        vanish();
     }
 }
