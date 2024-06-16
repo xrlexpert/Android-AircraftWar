@@ -13,13 +13,13 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.aircraftwar2024.R;
 
-public class OfflineActivity extends AppCompatActivity {
+public class OfflineGameActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_offline);
+        setContentView(R.layout.activity_offline_game);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -34,7 +34,7 @@ public class OfflineActivity extends AppCompatActivity {
         easyMode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(OfflineActivity.this,GameActivity.class);
+                Intent intent = new Intent(OfflineGameActivity.this,GameActivity.class);
                 intent.putExtra("gameType",0);
                 intent.putExtra("musicOn",musicOn);
                 startActivity(intent);
@@ -43,7 +43,7 @@ public class OfflineActivity extends AppCompatActivity {
         normalMode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(OfflineActivity.this,GameActivity.class);
+                Intent intent = new Intent(OfflineGameActivity.this,GameActivity.class);
                 intent.putExtra("gameType",1);
                 intent.putExtra("musicOn",musicOn);
                 startActivity(intent);
@@ -52,7 +52,7 @@ public class OfflineActivity extends AppCompatActivity {
         hardMode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(OfflineActivity.this,GameActivity.class);
+                Intent intent = new Intent(OfflineGameActivity.this,GameActivity.class);
                 intent.putExtra("gameType",2);
                 intent.putExtra("musicOn",musicOn);
                 startActivity(intent);
@@ -64,7 +64,7 @@ public class OfflineActivity extends AppCompatActivity {
         backHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(OfflineActivity.this,MainActivity.class);
+                Intent intent = new Intent(OfflineGameActivity.this,MainActivity.class);
                 startActivity(intent);
             }
         });

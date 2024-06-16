@@ -10,7 +10,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.example.aircraftwar2024.R;
-import com.example.aircraftwar2024.scores.ScoreDaoImpl;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
                 if(musicOn.isChecked()){
                     music = true;
                 }
-                Intent intent = new Intent(MainActivity.this, OfflineActivity.class);
+                Intent intent = new Intent(MainActivity.this, OfflineGameActivity.class);
                 intent.putExtra("music", music);
                 startActivity(intent);
             }
