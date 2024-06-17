@@ -25,7 +25,6 @@ public class GameActivity extends AppCompatActivity {
     public static int screenWidth,screenHeight;
     public Handler mHandler = new Mhandler();
     public TextView mTextView;
-    private static int score = 0;
     public static ScoreDaoImpl scoreDaoImpl;
     private int gameType = 0;
     private boolean musicOn = false;

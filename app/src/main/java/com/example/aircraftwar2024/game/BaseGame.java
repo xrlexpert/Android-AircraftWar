@@ -17,6 +17,7 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import com.example.aircraftwar2024.ImageManager;
 import com.example.aircraftwar2024.activity.GameActivity;
+import com.example.aircraftwar2024.activity.MainActivity;
 import com.example.aircraftwar2024.aircraft.AbstractAircraft;
 import com.example.aircraftwar2024.aircraft.AbstractEnemyAircraft;
 import com.example.aircraftwar2024.aircraft.BossEnemy;
@@ -111,8 +112,9 @@ public abstract class BaseGame extends SurfaceView implements SurfaceHolder.Call
 
     protected int enemyMaxNumber = 5;
 
-    private boolean gameOverFlag = false;
-    public int score = 0;
+    public static boolean gameOverFlag = false;
+    public static int score = 0;
+    public static int opscore = 0;
 
 
     /**
@@ -162,12 +164,13 @@ public abstract class BaseGame extends SurfaceView implements SurfaceHolder.Call
         PaintScore.setTextAlign(Paint.Align.LEFT);
         PaintScore.setTextSize(75);
 
-
         mSurfaceHolder = this.getHolder();
         mSurfaceHolder.addCallback(this);
         this.setFocusable(true);
         ImageManager.initImage(context);
 
+        score = 0;
+        gameOverFlag = false;
         // 初始化英雄机
         heroAircraft = HeroAircraft.getHeroAircraft();
         heroAircraft.setHp(1000);
@@ -459,12 +462,19 @@ public abstract class BaseGame extends SurfaceView implements SurfaceHolder.Call
             myMediaPlayer.playGameOverMusic();
             gameOverFlag = true;
             mbLoop = false;
-            Message msg = Message.obtain();
-            msg.what = 0; //消息的标识
-            Bundle bundle = new Bundle();
-            bundle.putInt("score",score);
-            msg.setData(bundle);
-            mHandler.sendMessage(msg);
+            if(MainActivity.modeType == 0){
+                Message msg = Message.obtain();
+                msg.what = 0; //消息的标识
+                Bundle bundle = new Bundle();
+                bundle.putInt("score",score);
+                msg.setData(bundle);
+                mHandler.sendMessage(msg);
+            }
+            else{
+                while(MainActivity.online){
+                    draw();
+                }
+            }
             Log.i(TAG, "heroAircraft is not Valid");
         }
 
@@ -522,8 +532,16 @@ public abstract class BaseGame extends SurfaceView implements SurfaceHolder.Call
 
     private void paintScoreAndLife() {
         /**TODO:动态绘制文本框显示英雄机的分数和生命值**/
-        canvas.drawText("分数：" + score,0,100,PaintScore);
-        canvas.drawText("血量：" + heroAircraft.getHp(),0,200,PaintBlood);
+        if(MainActivity.modeType == 1){
+            canvas.drawText("对手分数：" + opscore,0,100,PaintScore);
+            canvas.drawText("我的分数：" + score,0,200,PaintScore);
+            canvas.drawText("我的血量：" + heroAircraft.getHp(),0,300,PaintBlood);
+        }
+        else{
+            canvas.drawText("我的分数：" + score,0,100,PaintScore);
+            canvas.drawText("我的血量：" + heroAircraft.getHp(),0,200,PaintBlood);
+        }
+
     }
 
     @Override
@@ -547,7 +565,6 @@ public abstract class BaseGame extends SurfaceView implements SurfaceHolder.Call
 
     @Override
     public void run() {
-        /*TODO*/
         while(mbLoop){
             action();
             draw();
